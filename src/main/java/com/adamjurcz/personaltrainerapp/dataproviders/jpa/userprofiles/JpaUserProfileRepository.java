@@ -12,7 +12,7 @@ import java.util.Optional;
 @Component
 public interface JpaUserProfileRepository extends JpaRepository<UserProfileData, Long>{
 
-    public Optional<UserProfileData> save(UserProfileData userProfileData);
+    public UserProfileData save(UserProfileData userProfileData);
     public Optional<UserProfileData> findById(Long id);
     public Boolean existsByUsername(String username);
     public Boolean existsByEmail(String email);

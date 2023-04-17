@@ -18,7 +18,7 @@ public class UserProfileRepositoryImpl implements UserProfileRepository {
 
     @Override
     public UserProfile save(UserProfile userProfile) {
-        UserProfileData result = repository.save(UserProfileData.mapToUserData(userProfile)).orElseThrow();
+        UserProfileData result = repository.save(UserProfileData.mapToUserData(userProfile));
         return UserProfileData.mapToUser(result);
     }
 
