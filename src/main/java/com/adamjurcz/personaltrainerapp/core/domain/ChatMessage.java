@@ -2,6 +2,8 @@ package com.adamjurcz.personaltrainerapp.core.domain;
 
 import lombok.*;
 
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -9,15 +11,13 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 public class ChatMessage {
-    private Identity id;
+    private String username;
 
-    private String message;
+    private String chatRoomId;
 
-    private String toJID;
+    private Date date;
 
-    private Integer messageLength;
-
-    private Status status;
-
-
+    private String fromUser;
+    private String toUser;
+    private String text;
 }
