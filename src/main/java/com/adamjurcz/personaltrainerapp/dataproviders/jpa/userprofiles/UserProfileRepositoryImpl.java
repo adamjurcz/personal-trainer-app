@@ -2,6 +2,7 @@ package com.adamjurcz.personaltrainerapp.dataproviders.jpa.userprofiles;
 
 import com.adamjurcz.personaltrainerapp.core.domain.Identity;
 import com.adamjurcz.personaltrainerapp.core.domain.UserProfile;
+import com.adamjurcz.personaltrainerapp.core.usecases.exceptions.TrainerApiException;
 import com.adamjurcz.personaltrainerapp.core.usecases.userprofiles.UserProfileRepository;
 import com.adamjurcz.personaltrainerapp.dataproviders.entity.userprofiles.UserProfileData;
 import org.springframework.stereotype.Repository;
@@ -23,9 +24,9 @@ public class UserProfileRepositoryImpl implements UserProfileRepository {
     }
 
     @Override
-    public UserProfile getById(Identity id) {
-        UserProfileData result = repository.findById(id.getValue()).orElseThrow();
-        return UserProfileData.mapToUser(result);
+    public Optional<UserProfile> getById(Identity id) {
+        Optional<UserProfileData> userProfile = repository.findById(id.getValue());
+        return userProfile.map(UserProfileData::mapToUser);
     }
 
     @Override

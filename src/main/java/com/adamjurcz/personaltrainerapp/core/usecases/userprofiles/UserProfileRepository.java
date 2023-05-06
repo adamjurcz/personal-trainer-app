@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface UserProfileRepository {
     UserProfile save(UserProfile userProfile);
 
-    UserProfile getById(Identity id);
+    Optional<UserProfile> getById(Identity id);
 
     Boolean existsByUsername(String username);
 
