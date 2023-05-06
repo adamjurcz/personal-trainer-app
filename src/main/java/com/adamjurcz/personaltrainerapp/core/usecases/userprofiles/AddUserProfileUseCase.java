@@ -4,7 +4,6 @@ import com.adamjurcz.personaltrainerapp.core.domain.UserProfile;
 import com.adamjurcz.personaltrainerapp.core.usecases.UseCase;
 import com.adamjurcz.personaltrainerapp.core.usecases.exceptions.NameAlreadyUsedException;
 import lombok.Value;
-import org.apache.catalina.User;
 
 public class AddUserProfileUseCase extends UseCase<AddUserProfileUseCase.Input, AddUserProfileUseCase.Output> {
     private UserProfileRepository userProfileRepository;
@@ -15,10 +14,10 @@ public class AddUserProfileUseCase extends UseCase<AddUserProfileUseCase.Input, 
 
     @Override
     public Output execute(Input input) {
-        if(!userProfileRepository.existsByEmail(input.email)){
+        if(userProfileRepository.existsByEmail(input.email)){
             throw new NameAlreadyUsedException("Email already in use!");
         }
-        if(!userProfileRepository.existsByUsername(input.username)){
+        if(userProfileRepository.existsByUsername(input.username)){
             throw new NameAlreadyUsedException("Username already in use!");
         }
 
